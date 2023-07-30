@@ -1,12 +1,12 @@
-import './App.css';
-import MovieForm from "./components/MovieForm";
+import "./App.css";
+import AppRouter from "./routes/AppRouter";
+import { MovieProvider } from "./context/MovieProvider";
 
 function App() {
   return (
-    <div>
-      <h1 className='header'>Películas</h1>
-      <MovieForm />
-    </div>
+    <MovieProvider>
+      <AppRouter />
+    </MovieProvider>
   );
 }
 
