@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const ManagmentMovies = () => {
   const [movieData, setMovieData] = useState([]);
-  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletions
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     fetchMovieData();

@@ -86,37 +86,58 @@ export const HomePage = () => {
       <div className="pages">
         <h1 className="title-principal">Recently added movies</h1>
         <div className="filter-container">
-          <input
-            type="text"
-            placeholder="Search movies..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button onClick={handleSearch}>Search</button>
+          <div className="container-filter">
+            <h3 className="title-filter">
+              <i class="fa-solid fa-magnifying-glass"></i> Search by title
+            </h3>
+            <div className="search-container">
+              <input
+                type="text"
+                placeholder="Search movies..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="form-control"
+              />
+              <button onClick={handleSearch} className="btn-search">Search</button>
+            </div>
+          </div>
+          <div className="container-filter">
+            <h3 className="title-filter">
+              <i class="fa-solid fa-magnifying-glass"></i> Search by year
+            </h3>
 
-          <select
-            value={selectedYear}
-            onChange={(e) => handleFilterByYear(e.target.value)}
-          >
-            <option value="">All Years</option>
-            {extractUniqueYears().map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
+            <select
+              value={selectedYear}
+              onChange={(e) => handleFilterByYear(e.target.value)}
+              className="form-control"
+            >
+              <option value="">All Years</option>
+              {extractUniqueYears().map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <select
-            value={selectedCategory}
-            onChange={(e) => handleFilterByCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
+          <div className="container-filter">
+            <h3 className="title-filter">
+              <i class="fa-solid fa-magnifying-glass"></i> Search by category
+            </h3>
+
+            <select
+              value={selectedCategory}
+              onChange={(e) => handleFilterByCategory(e.target.value)}
+              className="form-control"
+            >
+              <option value="">All Categories</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="card-container">
           {movieData.slice(0, visibleItemCount).map((item) => {
@@ -127,9 +148,13 @@ export const HomePage = () => {
             );
           })}
         </div>
-        {movieData.length > visibleItemCount && (
-          <button onClick={handleLoadMore}>Load More</button>
-        )}
+        <div className="btn-load-container">
+          {movieData.length > visibleItemCount && (
+            <button onClick={handleLoadMore} className="btn-load">
+              Load More
+            </button>
+          )}
+        </div>
       </div>
     </>
   );

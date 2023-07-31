@@ -303,6 +303,115 @@ textarea.form-control:focus-visible {
   margin-bottom: 10px;
 }
 
+.btn-send {
+  background-color: #060b26;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-load {
+  background-color: #060b26;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 30%;
+  margin-top: 20px;
+}
+
+.btn-load-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.container-filter {
+  width: 30%;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn-search {
+  background-color: #060b26;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 30%;
+  margin-left: 15px;
+}
+
+.title-filter {
+  font-size: 19px;
+  font-weight: 900;
+  color: #060b26;
+  margin-bottom: 10px;
+}
+
+.title-filter i {
+  font-size: 19px;
+  font-weight: 900;
+  color: #060b26;
+  margin-right: 8px;
+}
+
+.title-principal-2 {
+  font-size: 46px;
+  font-weight: 900;
+  color: #060b26;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.container-option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.list-option li {
+  list-style: none;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.state-select {
+  width: 100%;
+  border: 1px solid #b7b7b7;
+  border-radius: 10px;
+  padding: 0.5rem;
+  resize: vertical;
+  margin: 10px 0;
+}
+
+.txt-desc-2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #060b26;
+  margin-top: 25px;
+  text-align: center;
+}
+
 @media (max-width: 1200px) {
   .card-container {
     grid-template-columns: repeat(4, 1fr);
@@ -319,6 +428,67 @@ textarea.form-control:focus-visible {
   .card-container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .title-principal-2 {
+    font-size: 25px;
+    font-weight: 900;
+    color: #060b26;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+
+  .back-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem auto 0 auto;
+    align-items: center;
+  }
+
+  .content-details-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-detail {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .content-details-text {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 2rem;
+  }
+
+  .btn-add-movie {
+    background: #060b26;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .form-group form {
+    width: 100%;
+    margin-top: 25px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -328,5 +498,83 @@ textarea.form-control:focus-visible {
 
   .title-principal {
     font-size: 25px;
+  }
+}
+
+@media (max-width: 425px) {
+  .filter-container {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .container-filter {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .btn-load {
+    width: 100%;
+  }
+
+  .title-principal-2 {
+    font-size: 25px;
+    font-weight: 900;
+    color: #060b26;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+
+  .back-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem auto 0 auto;
+    align-items: center;
+  }
+
+  .content-details-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-detail {
+    width: 100%;
+    height: 273px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .content-details-text {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 2rem;
+  }
+
+  .btn-add-movie {
+    background: #060b26;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .pages {
+    padding: 2rem;
   }
 }

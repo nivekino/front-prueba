@@ -11,11 +11,11 @@ const ManageOption = () => {
   }, []);
 
   const fetchOptions = () => {
-    // Fetch all options from the API
     axios
       .get("http://localhost:3010/api/options")
       .then((response) => {
-        setOptions(response.data.data);
+        const sortedOptions = response.data.data.sort((a, b) => a.id - b.id);
+        setOptions(sortedOptions);
       })
       .catch((error) => {
         console.error("Error fetching options:", error);
@@ -55,37 +55,40 @@ const ManageOption = () => {
           progress={undefined}
           theme="dark"
         />
-        <h1 className="title-principal">Manage Option</h1>
-        {options.length === 0 ? (
-          <p>No options available.</p>
-        ) : (
-          <ul>
-            {options
-              .filter((option) => option.name !== "Manage option")
-              .map((option) => (
-                <li key={option.id}>
-                  {option.name} -{" "}
-                  <select
-                    value={option.disable}
-                    onChange={(e) =>
-                      toggleDisable(option.id, e.target.value === "true")
-                    }
-                  >
-                    <option value="false">Enabled</option>
-                    <option value="true">Disabled</option>
-                  </select>
-                </li>
-              ))}
-          </ul>
-        )}
+        <h1 className="title-principal">Manage Options</h1>
+
+        <p className="txt-desc-2">
+          "Change state a disable if you want hidden option on menu, but if you
+          want restore change state on enable"
+        </p>
+        <div className="container-option">
+          {options.length === 0 ? (
+            <p>No options available.</p>
+          ) : (
+            <ul className="list-option">
+              {options
+                .filter((option) => option.name !== "Manage option")
+                .map((option) => (
+                  <li key={option.id}>
+                    {option.name}{" "}
+                    <select
+                      value={option.disable}
+                      onChange={(e) =>
+                        toggleDisable(option.id, e.target.value === "true")
+                      }
+                      className="state-select"
+                    >
+                      <option value="false">Enabled</option>
+                      <option value="true">Disabled</option>
+                    </select>
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
       </div>
     </>
   );
 };
 
 export default ManageOption;
-
-
-
-
-

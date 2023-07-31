@@ -19,10 +19,8 @@ const Navigation = () => {
       });
   }, []);
 
-  // Filter out menu items with disable: true
   const filteredMenuData = menuData.filter((item) => !item.disable);
 
-  // Sort the filtered menu items by ID in ascending order
   filteredMenuData.sort((a, b) => a.id - b.id);
 
   return (

@@ -97,10 +97,15 @@ const Form = () => {
           progress={undefined}
           theme="dark"
         />
-        <h1 className="title-principal">Field from Movie</h1>
-        <Link to={"/ManagmentMovies"} className="btn-back">
-          Go back to managment
-        </Link>
+
+        <div className="back-container">
+          <Link to={"/ManagmentMovies"} className="btn-back">
+            Go back to managment
+          </Link>
+        </div>
+
+        <h1 className="title-principal-2">Field from Movie</h1>
+
         <div className="form-group">
           <form onSubmit={formik.handleSubmit}>
             <div className="container-input">

@@ -32,10 +32,12 @@ export const MovieDetail = () => {
   return (
     <>
       <div className="pages">
-        <Link to={"/"} className="btn-back">
-          Go back to catalog
-        </Link>
-        <h1 className="title-principal">{movieData.name}</h1>
+        <div className="back-container">
+          <Link to={"/"} className="btn-back">
+            Go back to catalog
+          </Link>
+        </div>
+        <h1 className="title-principal-2">{movieData.name}</h1>
 
         <div className="content-details">
           <div className="content-details-image">
