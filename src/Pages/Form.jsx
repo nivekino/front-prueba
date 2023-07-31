@@ -87,16 +87,8 @@ const Form = () => {
 
   const getFormData = async () => {
     try {
-      const config = {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "*",
-        },
-      };
-
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/movies/${id}`,
-        config
+        `${process.env.REACT_APP_BASE_URL}/api/movies/${id}`
       );
       const { data } = response.data;
       setFormData(data);
