@@ -71,7 +71,7 @@ const Form = () => {
   const fetchImageAsFile = async (imageUrl) => {
     try {
       const response = await axios.get(imageUrl, {
-        "response-type": "blob",
+        "response-type": "jpg",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "*",
       });
