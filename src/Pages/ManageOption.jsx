@@ -12,7 +12,7 @@ const ManageOption = () => {
 
   const fetchOptions = () => {
     axios
-      .get("http://localhost:3010/api/options")
+      .get(`${process.env.REACT_APP_BASE_URL}/api/options`)
       .then((response) => {
         const sortedOptions = response.data.data.sort((a, b) => a.id - b.id);
         setOptions(sortedOptions);
@@ -24,7 +24,7 @@ const ManageOption = () => {
 
   const toggleDisable = (id, value) => {
     axios
-      .put(`http://localhost:3010/api/options/${id}/disable`, {
+      .put(`${process.env.REACT_APP_BASE_URL}/api/options/${id}/disable`, {
         disable: value,
       })
       .then((response) => {
