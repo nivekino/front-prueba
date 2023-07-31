@@ -9,6 +9,7 @@ export const HomePage = () => {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
+  const [visibleItemCount, setVisibleItemCount] = useState(10);
 
   const handleSearch = () => {
     axios
@@ -58,6 +59,10 @@ export const HomePage = () => {
     return Array.from(years);
   };
 
+  const handleLoadMore = () => {
+    setVisibleItemCount((prevVisibleItemCount) => prevVisibleItemCount + 10);
+  };
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/api/movies`)
@@ -70,8 +75,9 @@ export const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    // Extract unique categories from the movieData
-    const uniqueCategories = [...new Set(movieData.map((movie) => movie.category))];
+    const uniqueCategories = [
+      ...new Set(movieData.map((movie) => movie.category)),
+    ];
     setCategories(uniqueCategories);
   }, [movieData]);
 
@@ -113,7 +119,7 @@ export const HomePage = () => {
           </select>
         </div>
         <div className="card-container">
-          {movieData.map((item) => {
+          {movieData.slice(0, visibleItemCount).map((item) => {
             return (
               <Link to={`/movie/${item.id}`} key={item.id} movie={item.id}>
                 <CardMovie key={item.id} movie={item} />
@@ -121,6 +127,9 @@ export const HomePage = () => {
             );
           })}
         </div>
+        {movieData.length > visibleItemCount && (
+          <button onClick={handleLoadMore}>Load More</button>
+        )}
       </div>
     </>
   );

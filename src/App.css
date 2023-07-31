@@ -127,6 +127,7 @@ i {
   align-items: center;
   padding: 1rem;
   height: 150px;
+  width: 80%;
 }
 
 .title-movie {
@@ -204,6 +205,101 @@ a {
   font-size: 18px;
   font-weight: 700;
   color: #060b26;
+  margin-bottom: 10px;
+}
+
+.btn-card-edit {
+  background: #060b26;
+  border: none;
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.container-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+button.btn-card-delete {
+  background-color: red;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+.btn-add-movie {
+  background: #060b26;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+}
+.container-btn-add {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-group form {
+  width: 53%;
+  margin-top: 25px;
+}
+
+.form-control {
+  width: 100%;
+  border: 1px solid #b7b7b7;
+  border-radius: 10px;
+  padding: 0.5rem;
+  resize: vertical;
+}
+
+.container-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-control:focus-visible {
+  outline: none;
+}
+
+textarea.form-control:focus-visible {
+  outline: none;
+}
+
+.btn-send {
+  background-color: #060b26;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.title-form {
+  font-size: 19px;
+  font-weight: 800;
   margin-bottom: 10px;
 }
 

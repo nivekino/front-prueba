@@ -19,6 +19,12 @@ const Navigation = () => {
       });
   }, []);
 
+  // Filter out menu items with disable: true
+  const filteredMenuData = menuData.filter((item) => !item.disable);
+
+  // Sort the filtered menu items by ID in ascending order
+  filteredMenuData.sort((a, b) => a.id - b.id);
+
   return (
     <>
       <div className="navbar">
@@ -34,7 +40,7 @@ const Navigation = () => {
               <i className="fa-solid fa-xmark"></i>
             </Link>
           </li>
-          {menuData.map((item) => {
+          {filteredMenuData.map((item) => {
             return (
               <li key={item.id} className="nav-text">
                 <Link to={item.urlmenu}>
