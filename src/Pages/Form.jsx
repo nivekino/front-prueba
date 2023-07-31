@@ -70,7 +70,11 @@ const Form = () => {
 
   const fetchImageAsFile = async (imageUrl) => {
     try {
-      const response = await axios.get(imageUrl, { responseType: "blob" });
+      const response = await axios.get(imageUrl, {
+        responseType: "blob",
+        accessControlAllowOrigin: "*",
+        accessControlAllowMethods: "*",
+      });
       const file = new File([response.data], "movie-image.jpg", {
         type: response.headers["content-type"],
       });
@@ -83,8 +87,16 @@ const Form = () => {
 
   const getFormData = async () => {
     try {
+      const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "*",
+        },
+      };
+
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/movies/${id}`
+        `${process.env.REACT_APP_BASE_URL}/api/movies/${id}`,
+        config
       );
       const { data } = response.data;
       setFormData(data);
