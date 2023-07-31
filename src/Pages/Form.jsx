@@ -16,6 +16,7 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 const Form = () => {
   const [files, setFiles] = useState([]);
+  const [initialFiles, setInitialFiles] = useState([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -67,15 +68,41 @@ const Form = () => {
     },
   });
 
-  const getFormData = () => {
-    axios
-      .get(`${process.env.REACT_APP_BASE_URL}/api/movies/${id}`, formData)
-      .then((response) => {
-        setFormData(response.data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching movie data:", error);
+  const fetchImageAsFile = async (imageUrl) => {
+    try {
+      const response = await axios.get(imageUrl, { responseType: "blob" });
+      const file = new File([response.data], "movie-image.jpg", {
+        type: response.headers["content-type"],
       });
+      return file;
+    } catch (error) {
+      console.error("Error fetching image:", error);
+      return null;
+    }
+  };
+
+  const getFormData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/api/movies/${id}`
+      );
+      const { data } = response.data;
+      setFormData(data);
+
+      const file = await fetchImageAsFile(data.img);
+      if (file) {
+        setInitialFiles([
+          {
+            source: file,
+            options: {
+              type: "local",
+            },
+          },
+        ]);
+      }
+    } catch (error) {
+      console.error("Error fetching movie data:", error);
+    }
   };
 
   useEffect(() => {
@@ -202,7 +229,7 @@ const Form = () => {
               <h3 className="title-form">Upload Image</h3>
               <FilePond
                 allowMultiple={false}
-                files={files}
+                files={id ? initialFiles : files}
                 maxFiles={1}
                 allowReorder={true}
                 onupdatefiles={setFiles}
