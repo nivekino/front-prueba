@@ -88,7 +88,7 @@ export const HomePage = () => {
         <div className="filter-container">
           <div className="container-filter">
             <h3 className="title-filter">
-              <i class="fa-solid fa-magnifying-glass"></i> Search by title
+              <i className="fa-solid fa-magnifying-glass"></i> Search by title
             </h3>
             <div className="search-container">
               <input
@@ -103,7 +103,7 @@ export const HomePage = () => {
           </div>
           <div className="container-filter">
             <h3 className="title-filter">
-              <i class="fa-solid fa-magnifying-glass"></i> Search by year
+              <i className="fa-solid fa-magnifying-glass"></i> Search by year
             </h3>
 
             <select
@@ -122,7 +122,7 @@ export const HomePage = () => {
 
           <div className="container-filter">
             <h3 className="title-filter">
-              <i class="fa-solid fa-magnifying-glass"></i> Search by category
+              <i className="fa-solid fa-magnifying-glass"></i> Search by category
             </h3>
 
             <select

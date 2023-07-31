@@ -43,7 +43,11 @@ const Form = () => {
         formData.append("category", values.category);
         formData.append("description", values.description);
         formData.append("date", values.date);
-        formData.append("image", files[0].file);
+        console.log(files);
+
+        if (files[0]) {
+          formData.append("image", files[0].file);
+        }
 
         if (id) {
           await axios.put(
@@ -68,45 +72,32 @@ const Form = () => {
     },
   });
 
-  const fetchImageAsFile = async (imageUrl) => {
-    try {
-      const response = await axios.get(imageUrl, {
-        "response-type": "jpg",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "*",
-      });
-      const file = new File([response.data], "movie-image.jpg", {
-        type: response.headers["content-type"],
-      });
-      return file;
-    } catch (error) {
-      console.error("Error fetching image:", error);
-      return null;
-    }
-  };
+  // const fetchImageAsFile = async (imageUrl) => {
+  //   try {
+  //     const response = await axios.get(imageUrl, {
+  //       "response-type": "bob",
+  //       "Access-Control-Allow-Methods": "*",
+  //     });
+  //     const file = new File([response.data], "movie-image.jpg", {
+  //       type: response.headers["content-type"],
+  //     });
+  //     return file;
+  //   } catch (error) {
+  //     console.error("Error fetching image:", error);
+  //     return null;
+  //   }
+  // };
 
-  const getFormData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/movies/${id}`
-      );
-      const { data } = response.data;
-      setFormData(data);
-
-      const file = await fetchImageAsFile(data.img);
-      if (file) {
-        setInitialFiles([
-          {
-            source: file,
-            options: {
-              type: "local",
-            },
-          },
-        ]);
-      }
-    } catch (error) {
-      console.error("Error fetching movie data:", error);
-    }
+  const getFormData = () => {
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/api/movies/${id}`, formData)
+      .then((response) => {
+        setFormData(response.data.data);
+        console.log(formData.img);
+      })
+      .catch((error) => {
+        console.error("Error fetching movie data:", error);
+      });
   };
 
   useEffect(() => {
@@ -230,10 +221,18 @@ const Form = () => {
             </div>
 
             <div className="container-input">
+              {id && (
+                <div>
+                  <h3 className="title-form">Preview img</h3>
+                  <img src={formData.img} alt="" className="img-prev" />
+                </div>
+              )}
+
               <h3 className="title-form">Upload Image</h3>
+
               <FilePond
                 allowMultiple={false}
-                files={id ? initialFiles : files}
+                files={files}
                 maxFiles={1}
                 allowReorder={true}
                 onupdatefiles={setFiles}

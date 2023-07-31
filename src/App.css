@@ -416,6 +416,13 @@ textarea.form-control:focus-visible {
   text-align: center;
 }
 
+.img-prev {
+  width: 255px;
+  border-radius: 10px;
+  height: 250px;
+  object-fit: cover;
+}
+
 @media (max-width: 1200px) {
   .card-container {
     grid-template-columns: repeat(4, 1fr);
