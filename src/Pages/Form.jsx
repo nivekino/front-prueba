@@ -166,7 +166,7 @@ const Form = () => {
             </div>
 
             <div className="container-input">
-              <h3 className="title-form">Budget Movie</h3>
+              <h3 className="title-form">Duration Movie (min) </h3>
               <input
                 type="number"
                 className="form-control"
